@@ -5,12 +5,11 @@ html {
 .App {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-items: center;
   vertical-align: middle;
-  margin-top: 5vw;
   background-color: black;
   width: 100%;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
 }
 
 .title {
@@ -45,4 +44,29 @@ html {
     -100%
   ); /* Initially at the top-center of the circle */
   transition: transform 0.5s ease-in-out; /* Smooth transition for movement */
+}
+
+@media (min-width: 350px) {
+  .App {
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+  }
+  .circle {
+    display: flex;
+    align-self: center;
+    vertical-align: middle;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .circle {
+    transform: scale(0.8); /* 80% size on small screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .circle {
+    transform: scale(0.6); /* 60% size on very small screens */
+  }
 }
