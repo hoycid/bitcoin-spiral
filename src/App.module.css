@@ -1,7 +1,8 @@
-html {
-  background-color: black;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and borders are included in the total width/height */
 }
-
 .App {
   display: flex;
   flex-direction: column;
@@ -10,6 +11,7 @@ html {
   width: 100%;
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
+  height: 100vh; /* Ensure the container takes up the full viewport height */
 }
 
 .title {
@@ -31,8 +33,6 @@ html {
   width: 32rem;
   height: 32rem;
   border-radius: 50%;
-  display: flex;
-  align-self: center;
 }
 
 .ball {
@@ -47,16 +47,6 @@ html {
 }
 
 @media (min-width: 350px) {
-  .App {
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-  }
-  .circle {
-    display: flex;
-    align-self: center;
-    vertical-align: middle;
-    justify-self: center;
-  }
 }
 
 @media (max-width: 600px) {
