@@ -7,7 +7,7 @@ const App = () => {
   const [previousDate, setPreviousDate] = useState("");
 
   const cycleStartDate = new Date(2022, 0, 1); // "01/01/{currentYear}"
-  const circleRadius = 200; // radius of the circle in px (half of the width/height of the circle div)
+  const circleRadius = 260; // radius of the circle in px (half of the width/height of the circle div)
   const circumference = 2 * Math.PI * circleRadius; // Circumference of the circle
 
   const daysInCycle = 1460; // 4 years = 1460 days
@@ -56,27 +56,14 @@ const App = () => {
   useEffect(() => {
     fetchDate(); // Fetch the initial date when the component mounts
     incrementCounter(); // Increment counter based on days passed since the start of the year
+  }, [previousDate]); // Re-run effect if previousDate changes
 
+  useEffect(() => {
     const interval = setInterval(() => {
       fetchDate(); // Fetch date periodically
     }, 43200000); // 12 hours
-
     return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, [previousDate]); // Re-run effect if previousDate changes
-
-  // Function to calculate the ball's position
-  const calculateBallPosition = counter => {
-    const angle = (counter % 1460) * (360 / 1460) + 90; // Calculate angle based on counter (0 to 360 degrees)
-    const radians = (angle * Math.PI) / 180; // Convert degrees to radians
-
-    const x = -Math.cos(radians) * circleRadius; // X position of the ball
-    const y = -Math.sin(radians) * circleRadius; // Y position of the ball
-
-    // Calculate the area of the circle
-    const area = Math.PI * Math.pow(circleRadius, 2); // Area = π * radius^2
-
-    return { x, y, area };
-  };
+  }, []);
 
   // Reset the ball position if the counter reaches 1460
   useEffect(() => {
@@ -85,7 +72,21 @@ const App = () => {
     }
   }, [counter]);
 
-  const { x, y } = calculateBallPosition(counter); // Get the new ball position based on the counter
+  // Function to calculate the ball's position
+  // const calculateBallPosition = counter => {
+  //   const angle = (counter % 1460) * (360 / 1460) + 90; // Calculate angle based on counter (0 to 360 degrees)
+  //   const radians = (angle * Math.PI) / 180; // Convert degrees to radians
+
+  //   const x = -Math.cos(radians) * circleRadius; // X position of the ball
+  //   const y = -Math.sin(radians) * circleRadius; // Y position of the ball
+
+  //   // Calculate the area of the circle
+  //   const area = Math.PI * Math.pow(circleRadius, 2); // Area = π * radius^2
+
+  //   return { x, y, area };
+  // };
+
+  // const { x, y } = calculateBallPosition(counter); // Get the new ball position based on the counter
 
   const cycleYear = Math.floor((counter - 1) / daysInYear) + 1; // Calculate the current year in the 4-year cycle (1-4)
   const daysToNextYear = daysInYear - (counter % daysInYear); // Days remaining in the current year
@@ -135,19 +136,27 @@ const App = () => {
               width="100%"
               height="100%"
               preserveAspectRatio="xMidYMid slice" // Ensure it fills the area without distortion
+              style={{
+                transform: "rotate(90deg)", // Rotate the circle to start from the top
+                transformOrigin: "center", // Ensure rotation happens around the center of the circle
+              }}
             />
           </pattern>
         </defs>
         <circle
-          cx="260"
-          cy="252"
+          cx="258"
+          cy="258"
           r={circleRadius}
           fill="url(#bitcoinPattern)"
           stroke="url(#imagePattern)"
-          strokeWidth="30"
+          strokeWidth="50"
           strokeDasharray={circumference} // Total length of the stroke
           strokeDashoffset={dashOffset} // Offset based on counter
-          style={{ transition: "stroke-dashoffset 0.5s ease-in-out" }} // Smooth transition
+          style={{
+            transition: "stroke-dashoffset 0.5s ease-in-out",
+            transform: "rotate(-90deg)", // Rotate the circle to start from the top
+            transformOrigin: "center", // Ensure rotation happens around the center of the circle
+          }}
         />
       </svg>
       {/* <div className={styles.circle}>
