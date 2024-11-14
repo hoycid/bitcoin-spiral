@@ -106,9 +106,9 @@ const App = () => {
         <p>Days until next year: {daysToNextYear}</p>
         <p>Days remaining: {daysUntilEnd}</p>
       </div>
-      <div className={styles.controls}>
+      {/* <div className={styles.controls}>
         <button onClick={() => setCounter(prev => prev + 50)}>Increment</button>
-      </div>
+      </div> */}
       <svg width="250" height="250" className={styles.circle}>
         <defs>
           <pattern
