@@ -1,0 +1,48 @@
+html {
+  background-color: black;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  vertical-align: middle;
+  margin-top: 5vw;
+  background-color: black;
+  width: 100%;
+}
+
+.title {
+  background-color: cadetblue;
+}
+
+.details {
+  background-color: cadetblue;
+  display: none;
+}
+
+.controls {
+  background-color: cadetblue;
+  display: none;
+}
+
+.circle {
+  background-color: transparent;
+  width: 32rem;
+  height: 32rem;
+  border-radius: 50%;
+  display: flex;
+  align-self: center;
+}
+
+.ball {
+  position: absolute; /* Absolute positioning inside the circle */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(
+    -50%,
+    -100%
+  ); /* Initially at the top-center of the circle */
+  transition: transform 0.5s ease-in-out; /* Smooth transition for movement */
+}
