@@ -1,5 +1,6 @@
-# Getting Started with Create React App
+# Bitcoin Spiral
 
+A simple visualisation of the Bitcoin cycle. The bar circling the Bitcoin graphic moves toward the end everyday until it reaches the last year of the cycle and resets. This project is a work in progress.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
