@@ -5,6 +5,7 @@ const App = () => {
   const [counter, setCounter] = useState(1);
   const [date, setDate] = useState("");
   const [previousDate, setPreviousDate] = useState("");
+  const [detailsVisible, setDetailsVisible] = useState(false);
 
   const cycleStartDate = new Date(2022, 0, 1); // "01/01/{currentYear}"
   const circleRadius = 260; // radius of the circle in px (half of the width/height of the circle div)
@@ -88,6 +89,10 @@ const App = () => {
 
   // const { x, y } = calculateBallPosition(counter); // Get the new ball position based on the counter
 
+  const showDetails = () => {
+    setDetailsVisible(prevValue => !prevValue);
+  };
+
   const cycleYear = Math.floor((counter - 1) / daysInYear) + 1; // Calculate the current year in the 4-year cycle (1-4)
   const daysToNextYear = daysInYear - (counter % daysInYear); // Days remaining in the current year
   const daysUntilEnd = daysInCycle - counter; // Days remaining in the 4-year cycle
@@ -98,8 +103,17 @@ const App = () => {
   return (
     <div className={styles.App}>
       {/* <h1 className={styles.title}>Four Year Cycle</h1> */}
-      <div className={styles.container}>
-        <div className={styles.details}>
+      <div
+        className={styles.container}
+        style={{
+          gridTemplateColumns: detailsVisible ? "1fr 1fr" : "1fr",
+        }}
+      >
+        <div
+          className={`${styles.details} ${
+            detailsVisible ? styles.visible : styles.hidden
+          }`}
+        >
           <label>Cycle Start: </label>
           <p>{cycleStartDate.toLocaleDateString("en-GB")}</p>
           <label>Cycle Year:</label>
@@ -117,8 +131,6 @@ const App = () => {
         <button onClick={() => setCounter(prev => prev + 50)}>Increment</button>
       </div> */}
         <svg
-          width="100%"
-          height="auto"
           className={styles.circle}
           viewBox={`0 0 ${circleRadius * 2} ${circleRadius * 2}`}
         >
@@ -157,6 +169,7 @@ const App = () => {
             </pattern>
           </defs>
           <circle
+            onClick={showDetails}
             cx="260"
             cy="260"
             r={circleRadius}
