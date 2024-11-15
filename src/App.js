@@ -98,68 +98,81 @@ const App = () => {
   return (
     <div className={styles.App}>
       {/* <h1 className={styles.title}>Four Year Cycle</h1> */}
-      <div className={styles.details}>
-        <p>Cycle Start: {cycleStartDate.toLocaleDateString("en-GB")}</p>
-        <p>Cycle Year: {Math.floor(cycleYear)}</p>
-        <p>Current Date: {date}</p>
-        <p>Days passed: {counter}</p>
-        <p>Days until next year: {daysToNextYear}</p>
-        <p>Days remaining: {daysUntilEnd}</p>
-      </div>
-      {/* <div className={styles.controls}>
+      <div className={styles.container}>
+        <div className={styles.details}>
+          <label>Cycle Start: </label>
+          <p>{cycleStartDate.toLocaleDateString("en-GB")}</p>
+          <label>Cycle Year:</label>
+          <p>{Math.floor(cycleYear)}</p>
+          <label>Current Date:</label>
+          <p>{date}</p>
+          <label>Days passed:</label>
+          <p>{counter}</p>
+          <label>Days until next year:</label>
+          <p>{daysToNextYear}</p>
+          <span className={styles.daysRemain}>{daysUntilEnd} Days left</span>
+        </div>
+
+        {/* <div className={styles.controls}>
         <button onClick={() => setCounter(prev => prev + 50)}>Increment</button>
       </div> */}
-      <svg width="250" height="250" className={styles.circle}>
-        <defs>
-          <pattern
-            id="imagePattern"
-            patternUnits="userSpaceOnUse"
-            width="100%"
-            height="100%"
-          >
-            <image
-              href="/gradient.png"
+        <svg
+          width="100%"
+          height="auto"
+          className={styles.circle}
+          viewBox={`0 0 ${circleRadius * 2} ${circleRadius * 2}`}
+        >
+          <defs>
+            <pattern
+              id="imagePattern"
+              patternUnits="userSpaceOnUse"
               width="100%"
               height="100%"
-              preserveAspectRatio="xMidYMid slice" // Ensure it fills the area without distortion
-            />
-          </pattern>
+            >
+              <image
+                href="/gradient.png"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid slice" // Ensure it fills the area without distortion
+              />
+            </pattern>
 
-          <pattern
-            id="bitcoinPattern"
-            patternUnits="userSpaceOnUse"
-            width="100%"
-            height="100%"
-          >
-            <image
-              href="/bitcoin.png"
+            <pattern
+              id="bitcoinPattern"
+              patternUnits="userSpaceOnUse"
               width="100%"
               height="100%"
-              preserveAspectRatio="xMidYMid slice" // Ensure it fills the area without distortion
-              style={{
-                transform: "rotate(90deg)", // Rotate the circle to start from the top
-                transformOrigin: "center", // Ensure rotation happens around the center of the circle
-              }}
-            />
-          </pattern>
-        </defs>
-        <circle
-          cx="258"
-          cy="258"
-          r={circleRadius}
-          fill="url(#bitcoinPattern)"
-          stroke="url(#imagePattern)"
-          strokeWidth="50"
-          strokeDasharray={circumference} // Total length of the stroke
-          strokeDashoffset={dashOffset} // Offset based on counter
-          style={{
-            transition: "stroke-dashoffset 0.5s ease-in-out",
-            transform: "rotate(-90deg)", // Rotate the circle to start from the top
-            transformOrigin: "center", // Ensure rotation happens around the center of the circle
-          }}
-        />
-      </svg>
-      {/* <div className={styles.circle}>
+            >
+              <image
+                className={styles.bitcoin}
+                href="/bitcoin.svg"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid slice" // Ensure it fil ls the area without distortion
+                style={{
+                  transform: "rotate(90deg)",
+                  transformOrigin: `${circleRadius}px ${circleRadius}px`, // Use precise values
+                }}
+              />
+            </pattern>
+          </defs>
+          <circle
+            cx="260"
+            cy="260"
+            r={circleRadius}
+            fill="url(#bitcoinPattern)"
+            stroke="url(#imagePattern)"
+            strokeWidth="50"
+            strokeDasharray={circumference} // Total length of the stroke
+            strokeDashoffset={dashOffset} // Offset based on counter
+            style={{
+              transition: "stroke-dashoffset 0.5s ease-in-out",
+              transform: "rotate(-90deg)", // Rotate the circle to start from the top
+              transformOrigin: `${circleRadius}px ${circleRadius}px`, // Use precise values
+            }}
+          />
+        </svg>
+        {/* <div className={styles.circle}>
         <span
           className={styles.ball}
           style={{
@@ -169,6 +182,7 @@ const App = () => {
           <img src="/favicon.ico" alt="ball" />
         </span>
       </div> */}
+      </div>
     </div>
   );
 };
