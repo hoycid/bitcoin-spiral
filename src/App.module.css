@@ -8,7 +8,6 @@
 .App {
   display: flex;
   flex-direction: column;
-  vertical-align: middle;
   background-color: black;
   width: 100%;
   justify-content: center; /* Centers horizontally */
@@ -100,7 +99,7 @@ svg {
 }
 
 .circle:hover {
-  transform: scale(1.6);
+  transform: scale(1.1);
 }
 
 .ball {
@@ -122,12 +121,8 @@ svg {
   .container {
     display: flex;
     flex-direction: column;
-    vertical-align: middle;
-    background-color: black;
-    width: 100%;
     justify-content: center; /* Centers horizontally */
     align-items: center; /* Centers vertically */
-    height: 100vh; /* Ensure the container takes up the full viewport height */
   }
 
   .circle {
