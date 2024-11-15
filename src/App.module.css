@@ -137,10 +137,34 @@ svg {
   .circle:hover {
     transform: scale(1);
   }
+
+  .details labels {
+    font-size: 0.5rem;
+  }
+
+  .details p {
+    font-size: 0.75rem;
+  }
+
+  .daysRemain {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (orientation: landscape) {
   .circle {
-    transform: scale(1.5);
+    transform: scale(1);
+  }
+
+  .details labels {
+    font-size: 0.5rem;
+  }
+
+  .details p {
+    font-size: 0.75rem;
+  }
+
+  .daysRemain {
+    font-size: 1rem;
   }
 }
