@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CoinGeckoWidget from "./Components/CoinGeckoWidget";
 import styles from "./App.module.css";
 
 const App = () => {
@@ -114,7 +115,8 @@ const App = () => {
             detailsVisible ? styles.visible : styles.hidden
           }`}
         >
-          <label>Cycle Start: </label>
+          <CoinGeckoWidget />
+          {/* <label>Cycle Start: </label>
           <p>{cycleStartDate.toLocaleDateString("en-GB")}</p>
           <label>Cycle Year:</label>
           <p>{Math.floor(cycleYear)}</p>
@@ -123,8 +125,10 @@ const App = () => {
           <label>Days passed:</label>
           <p>{counter}</p>
           <label>Days until next year:</label>
-          <p>{daysToNextYear}</p>
-          <span className={styles.daysRemain}>{daysUntilEnd} Days left</span>
+          <p>{daysToNextYear}</p> */}
+          <span className={styles.daysRemain}>
+            {daysUntilEnd} Days left before ATH
+          </span>
         </div>
 
         {/* <div className={styles.controls}>
