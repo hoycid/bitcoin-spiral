@@ -68,8 +68,11 @@
 
 .daysRemain {
   margin-top: 1rem;
+  margin: 2rem;
   font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
   transition: transform 0.25s ease-in-out; /* Smooth transition for movement */
+  text-align: center;
 }
 
 .daysRemain:hover {
@@ -122,7 +125,6 @@ svg {
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
   }
 
   .circle {
